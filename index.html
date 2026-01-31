@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+    <title>Live AI Budget 2026 - Hosted on GitHub</title>
+    <script src="https://js.puter.com/v2/"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* (The 20-60-20 layout CSS from previous steps) */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --red: #d90429; --gold: #ffcc00; --glass: rgba(15, 15, 15, 0.98); }
+        body { width: 1920px; height: 1080px; background: #000; font-family: 'Anek Kannada', sans-serif; overflow: hidden; display: grid; grid-template-columns: 20% 60% 20%; grid-template-rows: 1000px 80px; }
+        /* ... existing broadcast styles ... */
+    </style>
+</head>
+<body>
+    <div id="status" style="position:fixed; top:0; left:50%; transform:translateX(-50%); z-index:9999; color:gold;">GITHUB LIVE: INITIALIZING...</div>
+    <script>
+        async function updateAI() {
+            try {
+                // Puter AI handles CORS and authentication automatically on any host
+                const response = await puter.ai.chat("Analyze the current Indian Budget 2026 trends and provide a summary in Kannada JSON format.", { model: 'gemini-1.5-flash' });
+                // ... render logic ...
+                document.getElementById('status').innerText = "LIVE - GITHUB PAGES";
+            } catch (e) { console.error(e); }
+        }
+        updateAI();
+        setInterval(updateAI, 300000);
+    </script>
+</body>
+</html>
