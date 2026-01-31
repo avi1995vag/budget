@@ -3,30 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
-    <title>Live AI Budget 2026 - Hosted on GitHub</title>
+    <title>Live Puter AI - Budget 2026 Hub</title>
     <script src="https://js.puter.com/v2/"></script>
     <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
-        /* (The 20-60-20 layout CSS from previous steps) */
+        /* BROADCAST LAYOUT: 20-60-20 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --red: #d90429; --gold: #ffcc00; --glass: rgba(15, 15, 15, 0.98); }
         body { width: 1920px; height: 1080px; background: #000; font-family: 'Anek Kannada', sans-serif; overflow: hidden; display: grid; grid-template-columns: 20% 60% 20%; grid-template-rows: 1000px 80px; }
-        /* ... existing broadcast styles ... */
+        
+        /* OVERLAY TAG */
+        .status-tag { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000; background: #111; color: var(--gold); padding: 10px 30px; border: 1px solid var(--gold); border-radius: 0 0 12px 12px; font-weight: 800; }
+
+        /* LEFT PANEL (20%) */
+        .panel-left { background: var(--glass); border-right: 2px solid var(--gold); }
+        .left-header { height: 150px; border-bottom: 2px solid #333; display: flex; align-items: center; justify-content: space-around; background: #000; }
+        .leader-img { width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--gold); }
+        .news-list { padding: 20px; }
+        .list-title { color: var(--gold); font-size: 2.2rem; font-weight: 800; border-bottom: 1px solid #333; margin-bottom: 15px; }
+        .n-card { background: #1a1a1a; padding: 15px; margin-bottom: 12px; border-left: 6px solid var(--red); }
+        .n-body { color: white; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+
+        /* CENTER PANEL (60%) */
+        .panel-center { display: flex; flex-direction: column; align-items: center; }
+        .top-band { width: 100%; height: 150px; background: linear-gradient(180deg, #b30000 0%, #660000 100%); border-bottom: 2px solid var(--gold); display: flex; justify-content: center; align-items: center; }
+        .main-head h1 { color: #fff; font-size: 4.2rem; text-shadow: 2px 2px 10px #000; }
+        .video-frame { width: 100%; height: 648px; background: #0a0a0a; position: relative; }
+        .big-info-panel { width: 100%; flex-grow: 1; background: #000; display: flex; }
+        .num-block { width: 160px; background: var(--gold); color: #000; font-size: 8rem; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+        .text-block { flex: 1; padding: 0 40px; display: flex; flex-direction: column; justify-content: center; }
+        .tb-content { color: white; font-size: 3.4rem; font-weight: 700; line-height: 1.1; }
+
+        /* RIGHT PANEL (20%) */
+        .panel-right { background: var(--glass); border-left: 2px solid var(--gold); }
+        .right-header { height: 150px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.2rem; font-weight: 800; border-bottom: 2px solid #333; }
+        .market-col { padding: 20px; }
+        .m-item { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #222; font-size: 1.9rem; color: #fff; }
+
+        /* FOOTER TICKER */
+        .ticker-footer { grid-column: 1 / 4; background: #fff; border-top: 6px solid var(--red); height: 80px; display: flex; overflow: hidden; }
+        .brk-tag { width: 450px; background: var(--red); color: #fff; font-size: 2.4rem; font-weight: 900; display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); z-index: 10; padding-right: 40px; }
+        .scroll-zone { flex: 1; display: flex; align-items: center; }
+        .scroll-msg { white-space: nowrap; font-size: 2.2rem; font-weight: 800; color: #000; animation: ticker 45s linear infinite; }
+
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-400%); } }
     </style>
 </head>
 <body>
-    <div id="status" style="position:fixed; top:0; left:50%; transform:translateX(-50%); z-index:9999; color:gold;">GITHUB LIVE: INITIALIZING...</div>
+
+    <div class="status-tag" id="status">GITHUB LIVE: INITIALIZING...</div>
+
+    <aside class="panel-left">
+        <div class="left-header">
+            <img src="https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-2?qlt=75" class="leader-img">
+            <img src="https://images.assettype.com/fortune-india/import/individual/2025/nirmala-sitharaman.jpg" class="leader-img">
+        </div>
+        <div id="headlines-box" class="news-list">
+            <div class="list-title">HEADLINES</div>
+            <div class="n-card"><div class="n-body">ಬಜೆಟ್ ಸುದ್ದಿಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...</div></div>
+        </div>
+    </aside>
+
+    <main class="panel-center">
+        <header class="top-band"><div class="main-head"><h1>UNION BUDGET 2026 LIVE</h1></div></header>
+        <div class="video-frame"></div>
+        <div class="big-info-panel">
+            <div class="num-block" id="t-num">1</div>
+            <div class="text-block">
+                <div class="tb-content" id="t-msg">Puter AI ಬಜೆಟ್ ವಿಶ್ಲೇಷಣೆಗೆ ಸುಸ್ವಾಗತ</div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="panel-right">
+        <div class="right-header">MARKET WATCH</div>
+        <div class="market-col">
+            <div class="m-item"><span>SENSEX</span><span style="color:#4ade80">74,210 ▲</span></div>
+            <div class="m-item"><span>NIFTY</span><span style="color:#4ade80">22,450 ▲</span></div>
+            <div class="m-item"><span>GOLD</span><span style="color:#ff5555">68,100 ▼</span></div>
+            <div class="m-item"><span>USD/INR</span><span style="color:#ff5555">83.15 ▼</span></div>
+        </div>
+    </aside>
+
+    <footer class="ticker-footer">
+        <div class="brk-tag">BREAKING NEWS</div>
+        <div class="scroll-zone"><div class="scroll-msg" id="ticker-text">Syncing with global news feeds via Puter Cloud... Please wait for AI sync.</div></div>
+    </footer>
+
     <script>
-        async function updateAI() {
+        const NEWS_RSS = "https://indianexpress.com/section/business/budget/feed/";
+        // Using corsproxy.io for better reliability than allorigins
+        const PROXY = "https://corsproxy.io/?url=";
+        
+        let budgetData = { ticker: "ಬಜೆಟ್ ಸುದ್ದಿಗಳು ಶೀಘ್ರದಲ್ಲಿ...", highlights: ["ಮಾಹಿತಿ ಅಪ್‌ಡೇಟ್ ಆಗುತ್ತಿದೆ"], top10: ["ಬಜೆಟ್ 2026 ನೇರ ಪ್ರಸಾರ ಆರಂಭ"] };
+        let currentIdx = 0;
+
+        async function fetchRSS() {
             try {
-                // Puter AI handles CORS and authentication automatically on any host
-                const response = await puter.ai.chat("Analyze the current Indian Budget 2026 trends and provide a summary in Kannada JSON format.", { model: 'gemini-1.5-flash' });
-                // ... render logic ...
-                document.getElementById('status').innerText = "LIVE - GITHUB PAGES";
-            } catch (e) { console.error(e); }
+                const res = await fetch(PROXY + encodeURIComponent(NEWS_RSS));
+                if (!res.ok) throw new Error("RSS Timeout");
+                const text = await res.text();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, "text/xml");
+                const items = Array.from(xml.querySelectorAll("item")).slice(0, 8);
+                return items.map(i => i.querySelector("title").textContent).join(". ");
+            } catch (e) {
+                console.error("RSS Error:", e);
+                return "Latest budget news updates and market trends.";
+            }
         }
+
+        async function updateAI() {
+            const status = document.getElementById('status');
+            status.innerText = "PUTER: SYNCING NEWS...";
+
+            try {
+                const combinedNews = await fetchRSS();
+                status.innerText = "PUTER: AI GENERATING KANNADA...";
+
+                // Puter AI: No API keys needed
+                const aiResponse = await puter.ai.chat(
+                    `Analyze these budget news items: "${combinedNews}". 
+                    Respond ONLY with a valid JSON object in professional Kannada:
+                    {"ticker": "One long news string", "highlights": ["pt 1", "pt 2"], "top10": ["Full sentence 1", "Full sentence 2"]}`,
+                    { model: 'gemini-1.5-flash' }
+                );
+
+                // Robust JSON Stripper to fix "Unexpected token O" error
+                const rawText = aiResponse.toString();
+                const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+                
+                if (jsonMatch) {
+                    budgetData = JSON.parse(jsonMatch[0]);
+                    renderUI();
+                    status.innerText = "LIVE - GITHUB PAGES (" + new Date().toLocaleTimeString() + ")";
+                }
+            } catch (err) {
+                console.error("AI Error:", err);
+                status.innerText = "PUTER: RETRYING IN 60S...";
+            }
+        }
+
+        function renderUI() {
+            document.getElementById('ticker-text').innerText = budgetData.ticker + " | " + budgetData.ticker;
+            const hBox = document.getElementById('headlines-box');
+            hBox.innerHTML = '<div class="list-title">HEADLINES</div>';
+            (budgetData.highlights || []).slice(0, 4).forEach(h => {
+                hBox.innerHTML += `<div class="n-card"><div class="n-body">${h}</div></div>`;
+            });
+        }
+
+        function rotateTop10() {
+            if (!budgetData.top10.length) return;
+            currentIdx = (currentIdx + 1) % budgetData.top10.length;
+            const msg = document.getElementById('t-msg');
+            msg.style.opacity = 0;
+            setTimeout(() => {
+                document.getElementById('t-num').innerText = currentIdx + 1;
+                msg.innerText = budgetData.top10[currentIdx];
+                msg.style.opacity = 1;
+            }, 500);
+        }
+
+        // Initialize Puter AI and start rotation
+        setInterval(updateAI, 300000); // Sync every 5 mins
+        setInterval(rotateTop10, 8000); // Rotate UI every 8 seconds
         updateAI();
-        setInterval(updateAI, 300000);
     </script>
 </body>
 </html>
