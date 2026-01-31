@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+    <title>Live AI Budget 2026 - Puter Cloud Edition</title>
+    <script src="https://js.puter.com/v2/"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* BROADCAST STYLING */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --red: #d90429; --gold: #ffcc00; --glass: rgba(15, 15, 15, 0.98); }
+        body { width: 1920px; height: 1080px; background: #000; font-family: 'Anek Kannada', sans-serif; overflow: hidden; display: grid; grid-template-columns: 20% 60% 20%; grid-template-rows: 1000px 80px; }
+        
+        /* STATUS BAR */
+        .status-overlay { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 9999; background: #111; padding: 10px 25px; border: 1px solid var(--gold); border-radius: 0 0 10px 10px; color: var(--gold); font-weight: 800; font-size: 0.9rem; }
+
+        /* LEFT PANEL */
+        .panel-left { background: var(--glass); border-right: 2px solid var(--gold); }
+        .left-header { height: 150px; background: #000; border-bottom: 2px solid #333; display: flex; align-items: center; justify-content: space-around; }
+        .leader-img { width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; }
+        .news-list { padding: 20px; }
+        .list-title { color: var(--gold); font-size: 2rem; font-weight: 800; margin-bottom: 15px; border-bottom: 1px solid #333; }
+        .n-card { background: #1a1a1a; padding: 12px; margin-bottom: 10px; border-left: 5px solid var(--red); }
+        .n-body { color: white; font-size: 1.7rem; font-weight: 500; line-height: 1.2; }
+
+        /* CENTER PANEL */
+        .panel-center { display: flex; flex-direction: column; align-items: center; }
+        .top-band { width: 100%; height: 150px; background: linear-gradient(to bottom, #b30000, #660000); display: flex; justify-content: center; align-items: center; border-bottom: 2px solid var(--gold); }
+        .main-head h1 { color: white; font-size: 4rem; text-shadow: 2px 2px 4px #000; }
+        .video-frame { width: 100%; height: 648px; background: #0a0a0a; position: relative; }
+        .big-info-panel { width: 100%; flex-grow: 1; background: #000; display: flex; border-top: 2px solid #222; }
+        .number-block { width: 150px; background: var(--gold); font-size: 8rem; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+        .text-block { flex: 1; padding-left: 30px; display: flex; flex-direction: column; justify-content: center; }
+        .tb-content { color: white; font-size: 3.2rem; font-weight: 700; line-height: 1.1; }
+
+        /* RIGHT PANEL */
+        .panel-right { background: var(--glass); border-left: 2px solid var(--gold); }
+        .right-header { height: 150px; border-bottom: 2px solid #333; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.2rem; font-weight: 800; }
+        .market-col { padding: 20px; }
+        .m-item { display: flex; justify-content: space-between; font-size: 1.8rem; padding: 15px 0; border-bottom: 1px solid #222; color: white; }
+
+        /* TICKER */
+        .ticker-footer { grid-column: 1 / 4; background: white; border-top: 5px solid var(--red); height: 80px; display: flex; overflow: hidden; }
+        .brk-tag { width: 400px; background: var(--red); color: white; font-size: 2.2rem; font-weight: 900; display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); z-index: 10; }
+        .scroll-zone { flex: 1; display: flex; align-items: center; overflow: hidden; }
+        .scroll-msg { white-space: nowrap; font-size: 2rem; font-weight: 700; color: #000; animation: ticker 60s linear infinite; }
+
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-400%); } }
+    </style>
+</head>
+<body>
+
+    <div class="status-overlay" id="status">PUTER CLOUD: READY</div>
+
+    <aside class="panel-left">
+        <div class="left-header">
+            <img src="https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-2?qlt=75" class="leader-img">
+            <img src="https://images.assettype.com/fortune-india/import/individual/2025/nirmala-sitharaman.jpg" class="leader-img">
+        </div>
+        <div class="news-list" id="headlines-box">
+            <div class="list-title">HEADLINES</div>
+            <div class="n-card"><div class="n-body">Fetching latest news via Puter.ai...</div></div>
+        </div>
+    </aside>
+
+    <main class="panel-center">
+        <header class="top-band"><div class="main-head"><h1>UNION BUDGET 2026</h1></div></header>
+        <div class="video-frame"></div>
+        <div class="big-info-panel">
+            <div class="number-block" id="t-num">1</div>
+            <div class="text-block">
+                <div class="tb-content" id="t-msg">ಕನ್ನಡದಲ್ಲಿ ಬಜೆಟ್ ಮುಖ್ಯಾಂಶಗಳಿಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ</div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="panel-right">
+        <div class="right-header">MARKET LIVE</div>
+        <div class="market-col">
+            <div class="m-item"><span>SENSEX</span><span style="color:#4ade80">74,210 ▲</span></div>
+            <div class="m-item"><span>NIFTY</span><span style="color:#4ade80">22,450 ▲</span></div>
+            <div class="m-item"><span>GOLD</span><span style="color:#ff5555">68,100 ▼</span></div>
+            <div class="m-item"><span>USD/INR</span><span style="color:#ff5555">83.15 ▼</span></div>
+        </div>
+    </aside>
+
+    <footer class="ticker-footer">
+        <div class="brk-tag">BREAKING NEWS</div>
+        <div class="scroll-zone"><div class="scroll-msg" id="ticker-text">Loading AI-synced budget data... Please stay tuned for live updates.</div></div>
+    </footer>
+
+    <script>
+        const NEWS_RSS = "https://indianexpress.com/section/business/budget/feed/";
+        const PROXY = "https://api.allorigins.win/get?url=";
+        
+        let budgetData = { ticker: "ಬಜೆಟ್ ಸುದ್ದಿಗಳು ಶೀಘ್ರದಲ್ಲಿ...", highlights: ["ಮಾಹಿತಿ ಅಪ್‌ಡೇಟ್ ಆಗುತ್ತಿದೆ"], top10: ["ಬಜೆಟ್ 2026 ನೇರ ಪ್ರಸಾರ"] };
+        let currentIdx = 0;
+
+        async function updateBroadcast() {
+            const status = document.getElementById('status');
+            status.innerText = "PUTER: FETCHING RSS...";
+
+            try {
+                // 1. Fetch News
+                const res = await fetch(PROXY + encodeURIComponent(NEWS_RSS));
+                const json = await res.json();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(json.contents, "text/xml");
+                const items = Array.from(xml.querySelectorAll("item")).slice(0, 5);
+                const headlines = items.map(i => i.querySelector("title").textContent).join(". ");
+
+                status.innerText = "PUTER: AI ANALYZING...";
+
+                // 2. Puter AI Chat Call
+                const aiResponse = await puter.ai.chat(
+                    `Analyze these news headlines: "${headlines}". 
+                    Output ONLY a valid JSON object in Kannada language:
+                    {"ticker": "One long string", "highlights": ["Brief pt 1", "Brief pt 2"], "top10": ["Full sentence 1", "Full sentence 2"]}`,
+                    { model: 'gemini-1.5-flash' }
+                );
+
+                // 3. Extract JSON from response
+                const cleanJson = aiResponse.toString().match(/\{[\s\S]*\}/);
+                if (cleanJson) {
+                    budgetData = JSON.parse(cleanJson[0]);
+                    renderUI();
+                    status.innerText = "PUTER: LIVE - " + new Date().toLocaleTimeString();
+                }
+            } catch (err) {
+                console.error(err);
+                status.innerText = "PUTER: ERROR - RETRYING";
+            }
+        }
+
+        function renderUI() {
+            document.getElementById('ticker-text').innerText = budgetData.ticker + " | " + budgetData.ticker;
+            const hBox = document.getElementById('headlines-box');
+            hBox.innerHTML = '<div class="list-title">HEADLINES</div>';
+            (budgetData.highlights || []).slice(0, 4).forEach(h => {
+                hBox.innerHTML += `<div class="n-card"><div class="n-body">${h}</div></div>`;
+            });
+        }
+
+        function rotateCenter() {
+            if (!budgetData.top10.length) return;
+            currentIdx = (currentIdx + 1) % budgetData.top10.length;
+            document.getElementById('t-num').innerText = currentIdx + 1;
+            document.getElementById('t-msg').innerText = budgetData.top10[currentIdx];
+        }
+
+        // Start Logic
+        setInterval(updateBroadcast, 180000); // 3 mins update
+        setInterval(rotateCenter, 8000); // 8 sec rotation
+        updateBroadcast();
+    </script>
+</body>
+</html>
