@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="kn">
 <head>
     <meta charset="UTF-8">
-    <title>BUDGET 2025 - LIVE PRO KANNADA</title>
+    <title>BUDGET 2026 - LIVE PRO KANNADA</title>
     <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@400;700;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -17,18 +18,18 @@
 
         /* LEFT PANEL */
         .panel-left { grid-row: 1 / 4; background: var(--navy); border-right: 1px solid #333; display: flex; flex-direction: column; }
-        .left-header { height: 180px; display: flex; align-items: center; justify-content: space-around; background: #000; border-bottom: 3px solid var(--crimson); }
+        .left-header { height: 160px; display: flex; align-items: center; justify-content: space-around; background: #000; border-bottom: 3px solid var(--crimson); }
         .leader-img { width: 110px; height: 110px; border-radius: 50%; border: 2px solid #fff; object-fit: cover; }
-        .rupee-coin { width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, #ffd700, #b8860b); display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 900; color: #5c4002; animation: spin 6s linear infinite; border: 2px solid #fff; }
+        .rupee-coin { width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, #ffd700, #b8860b); display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; color: #5c4002; animation: spin 6s linear infinite; border: 2px solid #fff; }
         @keyframes spin { from {transform: rotateY(0deg);} to {transform: rotateY(360deg);} }
         #left-list { padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
         .l-card { background: rgba(255,255,255,0.08); padding: 15px; border-radius: 8px; border-left: 6px solid var(--gold); }
         .l-card h4 { color: var(--gold); font-size: 1rem; text-transform: uppercase; margin-bottom: 5px; }
-        .l-card p { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+        .l-card p { font-size: 2.0rem; font-weight: 700; line-height: 1.2; }
 
         /* TOP BAND */
         .top-band { grid-column: 2 / 4; background: #fff; color: var(--navy); display: flex; align-items: center; justify-content: space-between; }
-        #top-ptr { flex: 1; padding: 0 50px; font-size: 3rem; font-weight: 900; color: var(--navy); }
+        #top-ptr { flex: 1; padding: 0 50px; font-size: 4rem; font-weight: 900; color: var(--navy); }
         .logo-box { width: 400px; height: 100%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); }
 
         /* CENTER AREA - FIXED OVERLAP ISSUE */
@@ -55,7 +56,7 @@
             color: var(--crimson); 
             padding: 10px 50px; 
             font-size: 2.5rem; 
-            font-weight: 900; 
+            font-weight: 700; 
             transform: skew(-15deg); 
             box-shadow: 10px 10px 0 #000; 
             /* FIXED: Use margin instead of absolute position */
@@ -75,14 +76,14 @@
         .bottom-shelf { grid-column: 2 / 3; background: #0a0a0a; border-top: 1px solid #333; display: flex; align-items: center; padding: 0 40px; }
         .bn-shelf { grid-column: 3 / 4; background: var(--navy); border-top: 1px solid #333; border-left: 1px solid #222; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .icon-box { width: 110px; height: 110px; background: var(--gold); color: #000; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; margin-right: 30px; }
-        .t10-info h2 { color: var(--gold); font-size: 1.3rem; text-transform: uppercase; }
-        .t10-info p { font-size: 2.8rem; font-weight: 700; }
+        .t10-info h2 { color: var(--gold); font-size: 2.3rem; text-transform: uppercase; }
+        .t10-info p { font-size: 3.8rem; font-weight: 700; }
         #bn-v { font-size: 5.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
-        #bn-l { font-size: 1.2rem; color: #888; text-transform: uppercase; }
+        #bn-l { font-size: 3.2rem; color: #888; text-transform: uppercase; }
 
         /* TICKER */
         .ticker { grid-column: 1 / 4; background: #fff; color: #000; display: flex; align-items: center; border-top: 6px solid var(--crimson); overflow: hidden; }
-        .t-head { background: var(--crimson); color: #fff; height: 100%; display: flex; align-items: center; padding: 0 40px; font-size: 2.2rem; font-weight: 900; z-index: 10; }
+        .t-head { background: var(--crimson); color: #fff; height: 120%; display: flex; align-items: center; padding: 0 60px; font-size: 2.2rem; font-weight: 900; z-index: 10; }
         #t-scroll { white-space: nowrap; font-size: 2.5rem; font-weight: 800; animation: scroll 40s linear infinite; }
         @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
     </style>
@@ -97,7 +98,7 @@
         <div id="left-list"></div>
     </aside>
 
-    <header class="top-band"><div id="top-ptr">BUDGET 2025</div><div class="logo-box">CHANNEL LOGO</div></header>
+    <header class="top-band"><div id="top-ptr">BUDGET 2026</div><div class="logo-box">VK</div></header>
 
     <main class="main-stage" id="stage">
         <div class="slot"></div>
@@ -116,7 +117,7 @@
     </div>
     <div class="bn-shelf"><div id="bn-v">00.0</div><div id="bn-l">VALUE</div></div>
 
-    <footer class="ticker"><div class="t-head">FLASH</div><div id="t-scroll">...</div></footer>
+    <footer class="ticker"><div class="t-head">UPDATES</div><div id="t-scroll">...</div></footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -142,7 +143,7 @@
 
         const iconMap = {
             "ಕೃಷಿ": "fa-tractor", "ರೈತ": "fa-tractor", "ತೆರಿಗೆ": "fa-hand-holding-dollar", 
-            "ಆದಾಯ": "fa-wallet", "ರೈಲ್ವೆ": "fa-train", "ಸಾರಿಗೆ": "fa-bus",
+            "ಆದಾಯ": "fa-wallet", "ರೈಲ್ವೇ": "fa-train", "ಸಾರಿಗೆ": "fa-bus",
             "ಶಿಕ್ಷಣ": "fa-graduation-cap", "ಶಾಲಾ": "fa-school", "ಆರೋಗ್ಯ": "fa-heart-pulse", 
             "ವೈದ್ಯಕೀಯ": "fa-hospital", "ರಕ್ಷಣೆ": "fa-shield-halved", "ಸೇನೆ": "fa-person-military-pointing",
             "ಬ್ಯಾಂಕ್": "fa-bank", "ಹಣಕಾಸು": "fa-coins", "ಚಿನ್ನ": "fa-gem", "ಬೆಳ್ಳಿ": "fa-coins",
