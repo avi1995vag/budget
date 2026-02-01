@@ -2,173 +2,160 @@
 <html lang="kn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
-    <title>Live Puter AI - Budget 2026 Hub</title>
-    <script src="https://js.puter.com/v2/"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <title>BUDGET 2025 - LIVE PRO KANNADA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@400;700;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* BROADCAST LAYOUT: 20-60-20 */
+        :root { --navy: #001d3d; --crimson: #c1121f; --gold: #ffc300; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --red: #d90429; --gold: #ffcc00; --glass: rgba(15, 15, 15, 0.98); }
-        body { width: 1920px; height: 1080px; background: #000; font-family: 'Anek Kannada', sans-serif; overflow: hidden; display: grid; grid-template-columns: 20% 60% 20%; grid-template-rows: 1000px 80px; }
-        
-        /* OVERLAY TAG */
-        .status-tag { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000; background: #111; color: var(--gold); padding: 10px 30px; border: 1px solid var(--gold); border-radius: 0 0 12px 12px; font-weight: 800; }
+        body { 
+            width: 1920px; height: 1080px; background: #000; color: #fff;
+            font-family: 'Anek Kannada', sans-serif; overflow: hidden;
+            display: grid; grid-template-columns: 20% 60% 20%;
+            grid-template-rows: 160px 640px 200px 80px;
+        }
 
-        /* LEFT PANEL (20%) */
-        .panel-left { background: var(--glass); border-right: 2px solid var(--gold); }
-        .left-header { height: 150px; border-bottom: 2px solid #333; display: flex; align-items: center; justify-content: space-around; background: #000; }
-        .leader-img { width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--gold); }
-        .news-list { padding: 20px; }
-        .list-title { color: var(--gold); font-size: 2.2rem; font-weight: 800; border-bottom: 1px solid #333; margin-bottom: 15px; }
-        .n-card { background: #1a1a1a; padding: 15px; margin-bottom: 12px; border-left: 6px solid var(--red); }
-        .n-body { color: white; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+        /* LEFT PANEL */
+        .panel-left { grid-row: 1 / 4; background: var(--navy); border-right: 1px solid #333; display: flex; flex-direction: column; }
+        .left-header { height: 180px; display: flex; align-items: center; justify-content: space-around; background: #000; border-bottom: 3px solid var(--crimson); }
+        .leader-img { width: 110px; height: 110px; border-radius: 50%; border: 2px solid #fff; object-fit: cover; }
+        .rupee-coin { width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, #ffd700, #b8860b); display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 900; color: #5c4002; animation: spin 6s linear infinite; border: 2px solid #fff; }
+        @keyframes spin { from {transform: rotateY(0deg);} to {transform: rotateY(360deg);} }
+        #left-list { padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .l-card { background: rgba(255,255,255,0.08); padding: 15px; border-radius: 8px; border-left: 6px solid var(--gold); }
+        .l-card h4 { color: var(--gold); font-size: 1rem; text-transform: uppercase; margin-bottom: 5px; }
+        .l-card p { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
 
-        /* CENTER PANEL (60%) */
-        .panel-center { display: flex; flex-direction: column; align-items: center; }
-        .top-band { width: 100%; height: 150px; background: linear-gradient(180deg, #b30000 0%, #660000 100%); border-bottom: 2px solid var(--gold); display: flex; justify-content: center; align-items: center; }
-        .main-head h1 { color: #fff; font-size: 4.2rem; text-shadow: 2px 2px 10px #000; }
-        .video-frame { width: 100%; height: 648px; background: #0a0a0a; position: relative; }
-        .big-info-panel { width: 100%; flex-grow: 1; background: #000; display: flex; }
-        .num-block { width: 160px; background: var(--gold); color: #000; font-size: 8rem; font-weight: 900; display: flex; align-items: center; justify-content: center; }
-        .text-block { flex: 1; padding: 0 40px; display: flex; flex-direction: column; justify-content: center; }
-        .tb-content { color: white; font-size: 3.4rem; font-weight: 700; line-height: 1.1; }
+        /* TOP BAND (160px) */
+        .top-band { grid-column: 2 / 4; background: #fff; color: var(--navy); display: flex; align-items: center; justify-content: space-between; }
+        #top-ptr { flex: 1; padding: 0 50px; font-size: 3rem; font-weight: 900; color: var(--navy); }
+        .logo-box { width: 400px; height: 100%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); }
 
-        /* RIGHT PANEL (20%) */
-        .panel-right { background: var(--glass); border-left: 2px solid var(--gold); }
-        .right-header { height: 150px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.2rem; font-weight: 800; border-bottom: 2px solid #333; }
-        .market-col { padding: 20px; }
-        .m-item { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #222; font-size: 1.9rem; color: #fff; }
+        /* CENTER AREA */
+        .main-stage { grid-column: 2 / 4; display: flex; padding: 10px; gap: 10px; }
+        .slot { flex: 1; border-radius: 15px; overflow: hidden; position: relative; background: #111; }
+        .breaking-box { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; }
+        .overlay { position: absolute; width: 100%; height: 100%; background: linear-gradient(rgba(193,18,31,0.85), rgba(0,29,61,0.95)); z-index: 2; }
+        .b-tag { z-index: 5; background: #fff; color: var(--crimson); padding: 10px 50px; font-size: 2.5rem; font-weight: 900; transform: skew(-15deg); margin-bottom: 20px; box-shadow: 10px 10px 0 #000; position: absolute; top: 40px; }
+        #b-text { z-index: 5; font-size: 4.5rem; font-weight: 800; padding: 0 30px; text-shadow: 2px 2px 15px #000; }
 
-        /* FOOTER TICKER */
-        .ticker-footer { grid-column: 1 / 4; background: #fff; border-top: 6px solid var(--red); height: 80px; display: flex; overflow: hidden; }
-        .brk-tag { width: 450px; background: var(--red); color: #fff; font-size: 2.4rem; font-weight: 900; display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); z-index: 10; padding-right: 40px; }
-        .scroll-zone { flex: 1; display: flex; align-items: center; }
-        .scroll-msg { white-space: nowrap; font-size: 2.2rem; font-weight: 800; color: #000; animation: ticker 45s linear infinite; }
+        /* BOTTOM */
+        .bottom-shelf { grid-column: 2 / 3; background: #0a0a0a; border-top: 1px solid #333; display: flex; align-items: center; padding: 0 40px; }
+        .bn-shelf { grid-column: 3 / 4; background: var(--navy); border-top: 1px solid #333; border-left: 1px solid #222; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .icon-box { width: 110px; height: 110px; background: var(--gold); color: #000; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; margin-right: 30px; }
+        .t10-info h2 { color: var(--gold); font-size: 1.3rem; text-transform: uppercase; }
+        .t10-info p { font-size: 2.8rem; font-weight: 700; }
+        #bn-v { font-size: 5.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
+        #bn-l { font-size: 1.2rem; color: #888; text-transform: uppercase; }
 
-        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-400%); } }
+        /* TICKER */
+        .ticker { grid-column: 1 / 4; background: #fff; color: #000; display: flex; align-items: center; border-top: 6px solid var(--crimson); overflow: hidden; }
+        .t-head { background: var(--crimson); color: #fff; height: 100%; display: flex; align-items: center; padding: 0 40px; font-size: 2.2rem; font-weight: 900; z-index: 10; }
+        #t-scroll { white-space: nowrap; font-size: 2.5rem; font-weight: 800; animation: scroll 40s linear infinite; }
+        @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
     </style>
 </head>
 <body>
-
-    <div class="status-tag" id="status">GITHUB LIVE: INITIALIZING...</div>
-
     <aside class="panel-left">
         <div class="left-header">
-            <img src="https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-2?qlt=75" class="leader-img">
+            <img src="https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-2" class="leader-img">
+            <div class="rupee-coin">₹</div>
             <img src="https://images.assettype.com/fortune-india/import/individual/2025/nirmala-sitharaman.jpg" class="leader-img">
         </div>
-        <div id="headlines-box" class="news-list">
-            <div class="list-title">HEADLINES</div>
-            <div class="n-card"><div class="n-body">ಬಜೆಟ್ ಸುದ್ದಿಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...</div></div>
-        </div>
+        <div id="left-list"></div>
     </aside>
 
-    <main class="panel-center">
-        <header class="top-band"><div class="main-head"><h1>UNION BUDGET 2026 LIVE</h1></div></header>
-        <div class="video-frame"></div>
-        <div class="big-info-panel">
-            <div class="num-block" id="t-num">1</div>
-            <div class="text-block">
-                <div class="tb-content" id="t-msg">Puter AI ಬಜೆಟ್ ವಿಶ್ಲೇಷಣೆಗೆ ಸುಸ್ವಾಗತ</div>
+    <header class="top-band"><div id="top-ptr">BUDGET 2025</div><div class="logo-box">CHANNEL LOGO</div></header>
+
+    <main class="main-stage" id="stage">
+        <div class="slot"></div>
+        <div class="slot">
+            <div class="breaking-box">
+                <div class="overlay"></div>
+                <div class="b-tag">BUDGET BREAKING</div>
+                <div id="b-text">WAITING FOR DATA...</div>
             </div>
         </div>
     </main>
 
-    <aside class="panel-right">
-        <div class="right-header">MARKET WATCH</div>
-        <div class="market-col">
-            <div class="m-item"><span>SENSEX</span><span style="color:#4ade80">74,210 ▲</span></div>
-            <div class="m-item"><span>NIFTY</span><span style="color:#4ade80">22,450 ▲</span></div>
-            <div class="m-item"><span>GOLD</span><span style="color:#ff5555">68,100 ▼</span></div>
-            <div class="m-item"><span>USD/INR</span><span style="color:#ff5555">83.15 ▼</span></div>
-        </div>
-    </aside>
+    <div class="bottom-shelf">
+        <div class="icon-box" id="t10-icon"><i class="fas fa-bolt"></i></div>
+        <div class="t10-info"><h2 id="t-h">TOP UPDATE</h2><p id="t-p">...</p></div>
+    </div>
+    <div class="bn-shelf"><div id="bn-v">00.0</div><div id="bn-l">VALUE</div></div>
 
-    <footer class="ticker-footer">
-        <div class="brk-tag">BREAKING NEWS</div>
-        <div class="scroll-zone"><div class="scroll-msg" id="ticker-text">Syncing with global news feeds via Puter Cloud... Please wait for AI sync.</div></div>
-    </footer>
+    <footer class="ticker"><div class="t-head">FLASH</div><div id="t-scroll">...</div></footer>
 
-    <script>
-        const NEWS_RSS = "https://indianexpress.com/section/business/budget/feed/";
-        // Using corsproxy.io for better reliability than allorigins
-        const PROXY = "https://corsproxy.io/?url=";
-        
-        let budgetData = { ticker: "ಬಜೆಟ್ ಸುದ್ದಿಗಳು ಶೀಘ್ರದಲ್ಲಿ...", highlights: ["ಮಾಹಿತಿ ಅಪ್‌ಡೇಟ್ ಆಗುತ್ತಿದೆ"], top10: ["ಬಜೆಟ್ 2026 ನೇರ ಪ್ರಸಾರ ಆರಂಭ"] };
-        let currentIdx = 0;
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        async function fetchRSS() {
-            try {
-                const res = await fetch(PROXY + encodeURIComponent(NEWS_RSS));
-                if (!res.ok) throw new Error("RSS Timeout");
-                const text = await res.text();
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(text, "text/xml");
-                const items = Array.from(xml.querySelectorAll("item")).slice(0, 8);
-                return items.map(i => i.querySelector("title").textContent).join(". ");
-            } catch (e) {
-                console.error("RSS Error:", e);
-                return "Latest budget news updates and market trends.";
+        // --- PASTE YOUR FIREBASE CONFIG HERE ---
+        const firebaseConfig = {
+  apiKey: "AIzaSyAWF53Pa6ykqL82HL-3-UdXNHla0OrhNII",
+  authDomain: "budget-graphics.firebaseapp.com",
+  databaseURL: "https://budget-graphics-default-rtdb.firebaseio.com",
+  projectId: "budget-graphics",
+  storageBucket: "budget-graphics.firebasestorage.app",
+  messagingSenderId: "560743013359",
+  appId: "1:560743013359:web:e3f0d2cd9825f7c3faf41a"
+};
+        // ---------------------------------------
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        let state = { pointers: [], breaking: [], ticker: [], left: [], top10: [], bignums: [] };
+        let it = { p: 0, b: 0, t: 0, n: 0 };
+
+        const iconMap = {
+            "ಕೃಷಿ": "fa-tractor", "ರೈತ": "fa-tractor", "ತೆರಿಗೆ": "fa-hand-holding-dollar", 
+            "ಆದಾಯ": "fa-wallet", "ರೈಲ್ವೆ": "fa-train", "ಸಾರಿಗೆ": "fa-bus",
+            "ಶಿಕ್ಷಣ": "fa-graduation-cap", "ಶಾಲಾ": "fa-school", "ಆರೋಗ್ಯ": "fa-heart-pulse", 
+            "ವೈದ್ಯಕೀಯ": "fa-hospital", "ರಕ್ಷಣೆ": "fa-shield-halved", "ಸೇನೆ": "fa-person-military-pointing",
+            "ಬ್ಯಾಂಕ್": "fa-bank", "ಹಣಕಾಸು": "fa-coins", "ಚಿನ್ನ": "fa-gem", "ಬೆಳ್ಳಿ": "fa-coins",
+            "ಉದ್ಯೋಗ": "fa-briefcase", "ಕೆಲಸ": "fa-user-gear", "ಮಹಿಳೆ": "fa-person-dress"
+        };
+
+        onValue(ref(db, 'budget_live'), (snapshot) => {
+            const data = snapshot.val();
+            if(data) {
+                state = data;
+                updateDisplay();
+            }
+        });
+
+        function updateDisplay() {
+            if(state.left) {
+                document.getElementById('left-list').innerHTML = state.left.map(i => `<div class="l-card"><h4>${i.h}</h4><p>${i.b}</p></div>`).join('');
+            }
+            if(state.ticker) {
+                document.getElementById('t-scroll').innerText = state.ticker.join(" • ");
             }
         }
 
-        async function updateAI() {
-            const status = document.getElementById('status');
-            status.innerText = "PUTER: SYNCING NEWS...";
+        setInterval(() => {
+            if(state.pointers?.length) document.getElementById('top-ptr').innerText = state.pointers[it.p++ % state.pointers.length];
+            if(state.breaking?.length) document.getElementById('b-text').innerText = state.breaking[it.b++ % state.breaking.length];
+        }, 7000);
 
-            try {
-                const combinedNews = await fetchRSS();
-                status.innerText = "PUTER: AI GENERATING KANNADA...";
-
-                // Puter AI: No API keys needed
-                const aiResponse = await puter.ai.chat(
-                    `Analyze these budget news items: "${combinedNews}". 
-                    Respond ONLY with a valid JSON object in professional Kannada:
-                    {"ticker": "One long news string", "highlights": ["pt 1", "pt 2"], "top10": ["Full sentence 1", "Full sentence 2"]}`,
-                    { model: 'gemini-1.5-flash' }
-                );
-
-                // Robust JSON Stripper to fix "Unexpected token O" error
-                const rawText = aiResponse.toString();
-                const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-                
-                if (jsonMatch) {
-                    budgetData = JSON.parse(jsonMatch[0]);
-                    renderUI();
-                    status.innerText = "LIVE - GITHUB PAGES (" + new Date().toLocaleTimeString() + ")";
+        setInterval(() => {
+            if(state.top10?.length) {
+                const item = state.top10[it.t++ % state.top10.length];
+                document.getElementById('t-h').innerText = item.h;
+                document.getElementById('t-p').innerText = item.b;
+                let foundIcon = "fa-bolt"; 
+                for(let key in iconMap) {
+                    if(item.h.includes(key) || item.b.includes(key)) { foundIcon = iconMap[key]; break; }
                 }
-            } catch (err) {
-                console.error("AI Error:", err);
-                status.innerText = "PUTER: RETRYING IN 60S...";
+                document.getElementById('t10-icon').innerHTML = `<i class="fas ${foundIcon}"></i>`;
             }
-        }
-
-        function renderUI() {
-            document.getElementById('ticker-text').innerText = budgetData.ticker + " | " + budgetData.ticker;
-            const hBox = document.getElementById('headlines-box');
-            hBox.innerHTML = '<div class="list-title">HEADLINES</div>';
-            (budgetData.highlights || []).slice(0, 4).forEach(h => {
-                hBox.innerHTML += `<div class="n-card"><div class="n-body">${h}</div></div>`;
-            });
-        }
-
-        function rotateTop10() {
-            if (!budgetData.top10.length) return;
-            currentIdx = (currentIdx + 1) % budgetData.top10.length;
-            const msg = document.getElementById('t-msg');
-            msg.style.opacity = 0;
-            setTimeout(() => {
-                document.getElementById('t-num').innerText = currentIdx + 1;
-                msg.innerText = budgetData.top10[currentIdx];
-                msg.style.opacity = 1;
-            }, 500);
-        }
-
-        // Initialize Puter AI and start rotation
-        setInterval(updateAI, 300000); // Sync every 5 mins
-        setInterval(rotateTop10, 8000); // Rotate UI every 8 seconds
-        updateAI();
+            if(state.bignums?.length) {
+                const n = state.bignums[it.n++ % state.bignums.length];
+                document.getElementById('bn-v').innerText = n.v;
+                document.getElementById('bn-l').innerText = n.l;
+            }
+        }, 6000);
     </script>
 </body>
 </html>
