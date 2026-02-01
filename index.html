@@ -2,125 +2,169 @@
 <html lang="kn">
 <head>
     <meta charset="UTF-8">
-    <title>BUDGET 2025 - LIVE PRO KANNADA</title>
+    <title>BUDGET 2026 - PRO KANNADA FIXED</title>
     <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@400;700;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --navy: #001d3d; --crimson: #c1121f; --gold: #ffc300; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* Forces 16:9 and prevents cropping */
-        html, body { 
-            width: 100vw; height: 100vh; 
-            background: #000; overflow: hidden; 
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .main-container {
-            width: 100vw;
-            height: 56.25vw; /* Absolute 16:9 ratio */
-            max-height: 100vh;
-            max-width: 177.78vh; /* Absolute 16:9 ratio */
+        body { 
+            width: 1920px; height: 1080px; 
+            background: #000; color: #fff;
+            font-family: 'Anek Kannada', sans-serif; 
+            overflow: hidden;
             display: grid;
-            grid-template-columns: 22% 78%; /* Left Panel vs Rest */
-            grid-template-rows: 15% 60% 18% 7%; /* Top, Center, Bottom, Ticker */
-            font-family: 'Anek Kannada', sans-serif;
-            color: #fff;
+            grid-template-columns: 400px 1520px;
+            grid-template-rows: 160px 640px 200px 80px;
         }
 
-        /* LEFT PANEL */
-        .panel-left { grid-row: 1 / 4; background: var(--navy); border-right: 3px solid #222; display: flex; flex-direction: column; }
-        .left-header { height: 100%; max-height: 160px; display: flex; align-items: center; justify-content: space-around; background: #000; border-bottom: 4px solid var(--crimson); }
-        .leader-img { width: 30%; aspect-ratio: 1/1; border-radius: 50%; border: 2px solid #fff; object-fit: cover; }
-        .rupee-coin { width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle, #ffd700, #b8860b); display: flex; align-items: center; justify-content: center; font-size: 25px; font-weight: 900; color: #5c4002; animation: spin 6s linear infinite; border: 2px solid #fff; }
+        /* Scaler for low-res software - ensures it always fits 16:9 */
+        @media (max-width: 1919px), (max-height: 1079px) {
+            html { transform: scale(calc(window.innerWidth / 1920)); transform-origin: top left; }
+        }
+
+        /* LEFT PANEL (Rows 1-3) */
+        .panel-left { 
+            grid-row: 1 / 4; grid-column: 1 / 2;
+            background: var(--navy); border-right: 4px solid #111; 
+            display: flex; flex-direction: column; 
+        }
+        .left-header { 
+            height: 160px; display: flex; align-items: center; justify-content: space-around; 
+            background: #000; border-bottom: 4px solid var(--crimson); 
+        }
+        .leader-img { width: 110px; height: 110px; border-radius: 50%; border: 3px solid #fff; object-fit: cover; }
+        .rupee-coin { 
+            width: 70px; height: 70px; border-radius: 50%; 
+            background: radial-gradient(circle, #ffd700, #b8860b); 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 40px; font-weight: 900; color: #5c4002; 
+            animation: spin 6s linear infinite; border: 2px solid #fff; 
+        }
         @keyframes spin { from {transform: rotateY(0deg);} to {transform: rotateY(360deg);} }
-        #left-list { padding: 15px; display: flex; flex-direction: column; gap: 10px; flex: 1; overflow: hidden; }
-        .l-card { background: rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; border-left: 6px solid var(--gold); }
-        .l-card h4 { color: var(--gold); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 3px; }
-        .l-card p { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+
+        #left-list { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .l-card { background: rgba(255,255,255,0.08); padding: 20px; border-radius: 10px; border-left: 10px solid var(--gold); }
+        .l-card h4 { color: var(--gold); font-size: 1.2rem; margin-bottom: 8px; text-transform: uppercase; }
+        .l-card p { font-size: 2rem; font-weight: 800; line-height: 1.3; }
 
         /* TOP BAND */
-        .top-band { grid-column: 2 / 3; background: #fff; color: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
-        #top-ptr { flex: 1; font-size: 3.5rem; font-weight: 900; color: var(--navy); }
+        .top-band { 
+            grid-column: 2 / 3; background: #fff; color: var(--navy); 
+            display: flex; align-items: center; padding: 0 50px; 
+        }
+        #top-ptr { flex: 1; font-size: 4.5rem; font-weight: 900; }
+        .logo-box { background: var(--crimson); color: #fff; padding: 10px 40px; font-size: 3.5rem; font-weight: 900; }
 
         /* CENTER AREA: VIDEO + BREAKING */
-        .main-stage { grid-column: 2 / 3; display: grid; grid-template-columns: 65% 35%; background: #000; border-bottom: 2px solid #222; }
+        .main-stage { 
+            grid-column: 2 / 3; display: grid; 
+            grid-template-columns: 1000px 520px; /* Video takes 1000px, Breaking News 520px */
+            background: #000; 
+        }
         
-        .video-window { 
-            background: #111; 
-            border: 1px solid #333; 
-            position: relative; 
+        .video-container { 
+            background: #0a0a0a; border: 1px solid #222; 
             display: flex; align-items: center; justify-content: center;
         }
-        .video-window::after { content: "LIVE VIDEO"; color: #222; font-size: 2rem; font-weight: 800; }
+        .video-container::after { content: "LIVE VIDEO SCREEN"; color: #222; font-size: 3rem; font-weight: 900; }
 
         .breaking-box { 
-            background: linear-gradient(rgba(193,18,31,0.9), rgba(0,29,61,0.95)); 
+            background: linear-gradient(rgba(193,18,31,0.95), rgba(0,29,61,0.98)); 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            text-align: center; padding: 20px; border-left: 3px solid #000;
+            text-align: center; padding: 30px; border-left: 4px solid #000;
         }
-        .b-tag { background: #fff; color: var(--crimson); padding: 8px 30px; font-size: 1.8rem; font-weight: 700; transform: skew(-15deg); box-shadow: 6px 6px 0 #000; margin-bottom: 20px; }
-        #b-text { font-size: 2.8rem; font-weight: 800; text-shadow: 2px 2px 10px #000; line-height: 1.2; }
+        .b-tag { 
+            background: #fff; color: var(--crimson); padding: 12px 40px; 
+            font-size: 2.5rem; font-weight: 800; transform: skew(-15deg); 
+            box-shadow: 10px 10px 0 #000; margin-bottom: 40px; 
+        }
+        #b-text { font-size: 3.8rem; font-weight: 800; line-height: 1.2; text-shadow: 4px 4px 15px #000; }
 
         /* BOTTOM UPDATES */
-        .bottom-shelf-grid { grid-column: 2 / 3; display: grid; grid-template-columns: 75% 25%; background: #0a0a0a; }
-        .bottom-info { display: flex; align-items: center; padding: 0 30px; border-top: 1px solid #333; }
-        .icon-box { width: 90px; height: 90px; background: var(--gold); color: #000; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; margin-right: 25px; }
-        .t10-info h2 { color: var(--gold); font-size: 1.6rem; text-transform: uppercase; }
-        .t10-info p { font-size: 2.8rem; font-weight: 700; line-height: 1; }
-        
-        .bn-shelf { background: var(--navy); border-top: 1px solid #333; border-left: 2px solid #000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        #bn-v { font-size: 4.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
-        #bn-l { font-size: 1.8rem; color: #888; text-transform: uppercase; }
+        .bottom-shelf { 
+            grid-column: 2 / 3; display: grid; 
+            grid-template-columns: 1050px 470px;
+            background: #0a0a0a; border-top: 2px solid #333;
+        }
+        .update-area { display: flex; align-items: center; padding-left: 40px; }
+        .icon-box { 
+            width: 130px; height: 130px; background: var(--gold); color: #000; 
+            border-radius: 15px; display: flex; align-items: center; justify-content: center; 
+            font-size: 6rem; margin-right: 35px; 
+        }
+        .t10-info h2 { color: var(--gold); font-size: 2.2rem; margin-bottom: 5px; }
+        .t10-info p { font-size: 3.8rem; font-weight: 800; }
+
+        .bn-shelf { 
+            background: var(--navy); border-left: 4px solid #111; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+        }
+        #bn-v { font-size: 6.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
+        #bn-l { font-size: 2.8rem; color: #888; text-transform: uppercase; }
 
         /* TICKER */
-        .ticker { grid-column: 1 / 3; background: #fff; color: #000; display: flex; align-items: center; border-top: 5px solid var(--crimson); overflow: hidden; }
-        .t-head { background: var(--crimson); color: #fff; height: 100%; display: flex; align-items: center; padding: 0 40px; font-size: 1.8rem; font-weight: 900; z-index: 10; }
-        #t-scroll { white-space: nowrap; font-size: 2.2rem; font-weight: 800; animation: scroll 40s linear infinite; }
-        @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+        .ticker { 
+            grid-column: 1 / 3; background: #fff; color: #000; 
+            display: flex; align-items: center; border-top: 8px solid var(--crimson); 
+            overflow: hidden; 
+        }
+        .t-head { 
+            background: var(--crimson); color: #fff; height: 100%; 
+            display: flex; align-items: center; padding: 0 60px; 
+            font-size: 2.5rem; font-weight: 900; z-index: 10; 
+        }
+        #t-scroll { 
+            white-space: nowrap; font-size: 3.2rem; font-weight: 800; 
+            animation: scroll 40s linear infinite; padding-left: 100%; 
+        }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-250%); } }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <aside class="panel-left">
-            <div class="left-header">
-                <img src="https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-2" class="leader-img">
-                <div class="rupee-coin">₹</div>
-                <img src="https://images.assettype.com/fortune-india/import/individual/2025/nirmala-sitharaman.jpg" class="leader-img">
-            </div>
-            <div id="left-list"></div>
-        </aside>
+    <aside class="panel-left">
+        <div class="left-header">
+            <img src="https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-2" class="leader-img">
+            <div class="rupee-coin">₹</div>
+            <img src="https://images.assettype.com/fortune-india/import/individual/2025/nirmala-sitharaman.jpg" class="leader-img">
+        </div>
+        <div id="left-list"></div>
+    </aside>
 
-        <header class="top-band">
-            <div id="top-ptr">BUDGET 2026</div>
-        </header>
+    <header class="top-band">
+        <div id="top-ptr">BUDGET 2026</div>
+        <div class="logo-box">LIVE</div>
+    </header>
 
-        <main class="main-stage">
-            <div class="video-window">
-                </div>
-            <div class="breaking-box">
-                <div class="b-tag">BUDGET BREAKING</div>
-                <div id="b-text">ದತ್ತಾಂಶಕ್ಕಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...</div>
+    <main class="main-stage">
+        <div class="video-container">
             </div>
-        </main>
+        <div class="breaking-box">
+            <div class="b-tag">BREAKING NEWS</div>
+            <div id="b-text">WAITING FOR DATA...</div>
+        </div>
+    </main>
 
-        <div class="bottom-shelf-grid">
-            <div class="bottom-info">
-                <div class="icon-box"><i class="fas fa-bolt"></i></div>
-                <div class="t10-info"><h2 id="t-h">TOP UPDATE</h2><p id="t-p">...</p></div>
-            </div>
-            <div class="bn-shelf">
-                <div id="bn-v">00.0</div>
-                <div id="bn-l">VALUE</div>
+    <div class="bottom-shelf">
+        <div class="update-area">
+            <div class="icon-box"><i class="fas fa-bolt"></i></div>
+            <div class="t10-info">
+                <h2 id="t-h">TOP UPDATE</h2>
+                <p id="t-p">...</p>
             </div>
         </div>
-
-        <footer class="ticker">
-            <div class="t-head">LATEST</div>
-            <div id="t-scroll">...</div>
-        </footer>
+        <div class="bn-shelf">
+            <div id="bn-v">00.0</div>
+            <div id="bn-l">VALUE</div>
+        </div>
     </div>
+
+    <footer class="ticker">
+        <div class="t-head">ಮುಖ್ಯಾಂಶಗಳು</div>
+        <div id="t-scroll">...</div>
+    </footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -138,7 +182,6 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-
         let state = { pointers: [], breaking: [], ticker: [], left: [], top10: [], bignums: [] };
         let it = { p: 0, b: 0, t: 0, n: 0 };
 
@@ -146,12 +189,8 @@
             const data = snapshot.val();
             if(data) {
                 state = data;
-                if(state.left) {
-                    document.getElementById('left-list').innerHTML = state.left.slice(0, 4).map(i => `<div class="l-card"><h4>${i.h}</h4><p>${i.b}</p></div>`).join('');
-                }
-                if(state.ticker) {
-                    document.getElementById('t-scroll').innerText = state.ticker.join(" • ");
-                }
+                if(state.left) document.getElementById('left-list').innerHTML = state.left.slice(0, 4).map(i => `<div class="l-card"><h4>${i.h}</h4><p>${i.b}</p></div>`).join('');
+                if(state.ticker) document.getElementById('t-scroll').innerText = state.ticker.join("   •   ");
             }
         });
 
