@@ -1,161 +1,101 @@
 <!DOCTYPE html>
-<html lang="kn">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
-    <title>Live Puter AI - Budget 2026 Hub</title>
-    <script src="https://js.puter.com/v2/"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <title>BUDGET BULK CONTROL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* --- 20-60-20 BROADCAST LAYOUT --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --red: #d90429; --gold: #ffcc00; --glass: rgba(15, 15, 15, 0.98); }
-        body { width: 1920px; height: 1080px; background: #000; font-family: 'Anek Kannada', sans-serif; overflow: hidden; display: grid; grid-template-columns: 20% 60% 20%; grid-template-rows: 1000px 80px; }
-        
-        /* STATUS */
-        .status-tag { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000; background: #111; color: var(--gold); padding: 10px 30px; border: 1px solid var(--gold); border-radius: 0 0 12px 12px; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; }
-
-        /* PANELS */
-        .panel-left { background: var(--glass); border-right: 2px solid var(--gold); display: flex; flex-direction: column; }
-        .left-header { height: 150px; border-bottom: 2px solid #333; display: flex; align-items: center; justify-content: space-around; padding: 10px; background: #000; }
-        .leader-img { width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; }
-        .news-list { padding: 20px; flex-grow: 1; }
-        .list-title { color: var(--gold); font-size: 2.2rem; font-weight: 800; border-bottom: 1px solid #333; margin-bottom: 15px; }
-        .n-card { background: #1a1a1a; padding: 15px; margin-bottom: 12px; border-left: 6px solid var(--red); }
-        .n-body { color: white; font-size: 1.8rem; font-weight: 500; line-height: 1.2; }
-
-        .panel-center { display: flex; flex-direction: column; align-items: center; }
-        .top-band { width: 100%; height: 150px; background: linear-gradient(180deg, #b30000 0%, #660000 100%); border-bottom: 2px solid var(--gold); display: flex; justify-content: center; align-items: center; }
-        .main-head h1 { color: #fff; font-size: 4.2rem; font-weight: 800; text-shadow: 2px 2px 10px #000; }
-        .video-frame { width: 100%; height: 648px; background: #0a0a0a; position: relative; border-bottom: 2px solid #222; }
-        .big-info-panel { width: 100%; flex-grow: 1; background: #000; display: flex; }
-        .num-block { width: 160px; background: var(--gold); color: #000; font-size: 8rem; font-weight: 900; display: flex; align-items: center; justify-content: center; }
-        .text-block { flex: 1; padding: 0 40px; display: flex; flex-direction: column; justify-content: center; }
-        .tb-content { color: white; font-size: 3.4rem; font-weight: 700; line-height: 1.1; transition: opacity 0.5s; }
-
-        .panel-right { background: var(--glass); border-left: 2px solid var(--gold); }
-        .right-header { height: 150px; background: #111; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.2rem; font-weight: 800; border-bottom: 2px solid #333; }
-        .market-col { padding: 20px; }
-        .m-item { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #222; font-size: 1.9rem; color: #fff; }
-
-        .ticker-footer { grid-column: 1 / 4; background: #fff; border-top: 6px solid var(--red); height: 80px; display: flex; overflow: hidden; position: relative; }
-        .brk-tag { width: 450px; background: var(--red); color: #fff; font-size: 2.4rem; font-weight: 900; display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); z-index: 10; padding-right: 40px; }
-        .scroll-zone { flex: 1; display: flex; align-items: center; }
-        .scroll-msg { white-space: nowrap; font-size: 2.2rem; font-weight: 800; color: #000; animation: ticker 45s linear infinite; }
-
-        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-400%); } }
+        body { font-family: sans-serif; background: #f0f2f5; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h3 { color: #c1121f; margin-bottom: 10px; border-bottom: 2px solid #eee; }
+        textarea { width: 100%; height: 120px; margin: 10px 0; padding: 10px; border: 1px solid #ccc; font-size: 1rem; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: #001d3d; color: #fff; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.2s; }
+        button:hover { background: #c1121f; }
+        .hint { font-size: 0.8rem; color: #666; font-style: italic; }
+        @media (max-width: 768px) { body { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+    <div class="card">
+        <h3>1. Top Band Pointers</h3>
+        <p class="hint">Type each pointer on a NEW LINE</p>
+        <textarea id="ptrIn" placeholder="Pointer 1&#10;Pointer 2..."></textarea>
+    </div>
 
-    <div class="status-tag" id="status">PUTER CLOUD: INITIALIZING...</div>
+    <div class="card">
+        <h3>2. Breaking News (Center Only)</h3>
+        <p class="hint">Type each point on a NEW LINE</p>
+        <textarea id="breakIn" placeholder="News Point 1&#10;News Point 2..."></textarea>
+    </div>
 
-    <aside class="panel-left">
-        <div class="left-header">
-            <img src="https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-2?qlt=75" class="leader-img">
-            <img src="https://images.assettype.com/fortune-india/import/individual/2025/nirmala-sitharaman.jpg" class="leader-img">
-        </div>
-        <div class="news-list" id="headlines-box">
-            <div class="list-title">HEADLINES</div>
-            <div class="n-card"><div class="n-body">ಬಜೆಟ್ ಅಪ್‌ಡೇಟ್‌ಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...</div></div>
-        </div>
-    </aside>
+    <div class="card">
+        <h3>3. News Ticker (Bottom Scroll)</h3>
+        <p class="hint">Type each ticker point on a NEW LINE</p>
+        <textarea id="tickerIn" placeholder="Ticker 1&#10;Ticker 2..."></textarea>
+    </div>
 
-    <main class="panel-center">
-        <header class="top-band"><div class="main-head"><h1>UNION BUDGET 2026 LIVE</h1></div></header>
-        <div class="video-frame"></div>
-        <div class="big-info-panel">
-            <div class="num-block" id="t-num">1</div>
-            <div class="text-block">
-                <div class="tb-content" id="t-msg">Puter.ai ಬಜೆಟ್ ವಿಶ್ಲೇಷಣೆಗೆ ಸುಸ್ವಾಗತ</div>
-            </div>
-        </div>
-    </main>
+    <div class="card">
+        <h3>4. Left Panel Feed</h3>
+        <p class="hint">Format: Header | Body (One per line)</p>
+        <textarea id="leftIn" placeholder="ತೆರಿಗೆ | ಆದಾಯ ತೆರಿಗೆ ಮಿತಿ ಏರಿಕೆ&#10;ಕೃಷಿ | ರೈತರಿಗೆ ಹೊಸ ಯೋಜನೆ"></textarea>
+    </div>
 
-    <aside class="panel-right">
-        <div class="right-header">MARKET LIVE</div>
-        <div class="market-col">
-            <div class="m-item"><span>SENSEX</span><span style="color:#4ade80">74,210 ▲</span></div>
-            <div class="m-item"><span>NIFTY</span><span style="color:#4ade80">22,450 ▲</span></div>
-            <div class="m-item"><span>GOLD</span><span style="color:#ff5555">68,100 ▼</span></div>
-            <div class="m-item"><span>USD/INR</span><span style="color:#ff5555">83.15 ▼</span></div>
-        </div>
-    </aside>
+    <div class="card">
+        <h3>5. Top 10 Highlights</h3>
+        <p class="hint">Format: Header | Body (Clipart finds: ಕೃಷಿ, ರೈಲ್ವೆ, ಶಿಕ್ಷಣ, ಆರೋಗ್ಯ...)</p>
+        <textarea id="t10In" placeholder="ರೈಲ್ವೆ | ಹೊಸ ವಂದೇ ಭಾರತ್ ರೈಲು&#10;ಆರೋಗ್ಯ | 10 ಹೊಸ ಆಸ್ಪತ್ರೆಗಳು"></textarea>
+    </div>
 
-    <footer class="ticker-footer">
-        <div class="brk-tag">BREAKING NEWS</div>
-        <div class="scroll-zone"><div class="scroll-msg" id="ticker-text">Syncing with global news feeds via Puter Cloud... Please wait.</div></div>
-    </footer>
+    <div class="card">
+        <h3>6. Big Numbers</h3>
+        <p class="hint">Format: Number | Label (One per line)</p>
+        <textarea id="bnIn" placeholder="48.20 | TOTAL EXPENDITURE&#10;11.10 | CAPEX GROWTH"></textarea>
+    </div>
 
-    <script>
-        const RSS_FEED = "https://indianexpress.com/section/business/budget/feed/";
-        const PROXY = "https://api.allorigins.win/get?url=";
-        
-        let budgetData = { ticker: "ಬಜೆಟ್ ಸುದ್ದಿಗಳು ಶೀಘ್ರದಲ್ಲಿ...", highlights: ["ಮಾಹಿತಿ ಅಪ್‌ಡೇಟ್ ಆಗುತ್ತಿದೆ"], top10: ["ಬಜೆಟ್ 2026 ನೇರ ಪ್ರಸಾರ"] };
-        let topIndex = 0;
+    <div style="grid-column: 1 / -1; text-align: center; padding-bottom: 50px;">
+        <button id="pushBtn" style="width: 50%;">PUSH UPDATES TO LIVE</button>
+    </div>
 
-        async function updateAI() {
-            const status = document.getElementById('status');
-            status.innerText = "PUTER: FETCHING RSS...";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-            try {
-                // 1. Fetch News via proxy
-                const res = await fetch(PROXY + encodeURIComponent(RSS_FEED));
-                const json = await res.json();
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(json.contents, "text/xml");
-                const newsItems = Array.from(xml.querySelectorAll("item")).slice(0, 6);
-                const combinedNews = newsItems.map(i => i.querySelector("title").textContent).join(". ");
+        // --- PASTE YOUR FIREBASE CONFIG HERE ---
+        const firebaseConfig = {
+  apiKey: "AIzaSyAWF53Pa6ykqL82HL-3-UdXNHla0OrhNII",
+  authDomain: "budget-graphics.firebaseapp.com",
+  databaseURL: "https://budget-graphics-default-rtdb.firebaseio.com",
+  projectId: "budget-graphics",
+  storageBucket: "budget-graphics.firebasestorage.app",
+  messagingSenderId: "560743013359",
+  appId: "1:560743013359:web:e3f0d2cd9825f7c3faf41a"
+};
+        // ---------------------------------------
 
-                status.innerText = "PUTER: AI PROCESSING...";
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
-                // 2. Chat using Puter Cloud AI
-                const response = await puter.ai.chat(
-                    `Analyze this business news: "${combinedNews}". 
-                    Respond ONLY with a valid JSON in Kannada:
-                    {"ticker": "One long string", "highlights": ["pt 1", "pt 2"], "top10": ["Full sentence 1", "Full sentence 2"]}. No extra text.`,
-                    { model: 'gemini-1.5-flash' }
-                );
+        document.getElementById('pushBtn').addEventListener('click', () => {
+            const getData = (id) => document.getElementById(id).value.split('\n').filter(x => x.trim());
+            
+            const data = {
+                pointers: getData('ptrIn'),
+                breaking: getData('breakIn'),
+                ticker: getData('tickerIn'),
+                left: getData('leftIn').filter(x => x.includes('|')).map(x => {
+                    const p = x.split('|'); return { h: p[0].trim(), b: p[1].trim() };
+                }),
+                top10: getData('t10In').filter(x => x.includes('|')).map(x => {
+                    const p = x.split('|'); return { h: p[0].trim(), b: p[1].trim() };
+                }),
+                bignums: getData('bnIn').filter(x => x.includes('|')).map(x => {
+                    const p = x.split('|'); return { v: p[0].trim(), l: p[1].trim() };
+                })
+            };
 
-                // 3. Clean and parse JSON safely
-                const rawText = response.toString();
-                const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-                if (jsonMatch) {
-                    budgetData = JSON.parse(jsonMatch[0]);
-                    renderUI();
-                    status.innerText = "PUTER: LIVE - " + new Date().toLocaleTimeString();
-                }
-            } catch (err) {
-                console.error("Puter Error:", err);
-                status.innerText = "PUTER: SYNC ERROR";
-            }
-        }
-
-        function renderUI() {
-            document.getElementById('ticker-text').innerText = budgetData.ticker + " | " + budgetData.ticker;
-            const hBox = document.getElementById('headlines-box');
-            hBox.innerHTML = '<div class="list-title">HEADLINES</div>';
-            (budgetData.highlights || []).slice(0, 4).forEach(h => {
-                hBox.innerHTML += `<div class="n-card"><div class="n-body">${h}</div></div>`;
-            });
-        }
-
-        function rotateTop10() {
-            if (!budgetData.top10.length) return;
-            topIndex = (topIndex + 1) % budgetData.top10.length;
-            const msg = document.getElementById('t-msg');
-            msg.style.opacity = 0;
-            setTimeout(() => {
-                document.getElementById('t-num').innerText = topIndex + 1;
-                msg.innerText = budgetData.top10[topIndex];
-                msg.style.opacity = 1;
-            }, 500);
-        }
-
-        // Start Auto-Updates
-        setInterval(updateAI, 300000); // 5 mins
-        setInterval(rotateTop10, 8000); // 8 sec rotation
-        updateAI();
+            set(ref(db, 'budget_live'), data)
+                .then(() => alert("UPDATED SUCCESSFULLY!"))
+                .catch((e) => alert("Error: " + e.message));
+        });
     </script>
 </body>
 </html>
