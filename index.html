@@ -2,189 +2,146 @@
 <html lang="kn">
 <head>
     <meta charset="UTF-8">
-    <title>BUDGET 2026 - LIVE PRO KANNADA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@400;700;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BUDGET 2026 - FIXED 1080p</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { 
-            --navy: #001d3d; 
-            --crimson: #c1121f; 
-            --gold: #ffc300; 
-            --glass: rgba(255, 255, 255, 0.1);
-        }
+        :root { --navy: #001d3d; --crimson: #c1121f; --gold: #ffc300; }
 
+        /* CRITICAL: Force 1920x1080 and prevent any overflow/zoom crop */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body { 
+        
+        html, body { 
             width: 1920px; 
             height: 1080px; 
             background: #000; 
-            color: #fff;
-            font-family: 'Anek Kannada', sans-serif; 
             overflow: hidden;
-            display: grid; 
-            grid-template-columns: 450px 1fr 350px;
+            position: fixed; /* Prevents accidental scrolling */
+        }
+
+        body {
+            font-family: 'Anek Kannada', sans-serif;
+            display: grid;
+            grid-template-columns: 450px 1fr 380px;
             grid-template-rows: 150px 1fr 180px 100px;
         }
 
-        /* LEFT PANEL: KEY HIGHLIGHTS */
+        /* LEFT PANEL - Safe Inside 450px */
         .panel-left { 
             grid-row: 1 / 4; 
             background: var(--navy); 
             border-right: 4px solid var(--gold); 
             display: flex; 
-            flex-direction: column; 
+            flex-direction: column;
         }
 
         .left-header { 
             height: 150px; 
             display: flex; 
             align-items: center; 
-            justify-content: space-around; 
+            justify-content: center; 
+            gap: 20px;
             background: #000; 
             border-bottom: 5px solid var(--crimson); 
         }
 
-        .leader-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; }
-
+        .leader-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #fff; object-fit: cover; }
         .rupee-coin { 
             width: 80px; height: 80px; border-radius: 50%; 
             background: radial-gradient(circle, #ffd700, #b8860b); 
             display: flex; align-items: center; justify-content: center; 
             font-size: 45px; font-weight: 900; color: #5c4002; 
             animation: spin 6s linear infinite; 
-            border: 2px solid #fff; 
         }
         @keyframes spin { from {transform: rotateY(0deg);} to {transform: rotateY(360deg);} }
 
-        #left-list { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        #left-list { padding: 25px; overflow: hidden; }
         .l-card { 
-            background: var(--glass); 
+            background: rgba(255,255,255,0.1); 
             padding: 20px; 
             border-radius: 12px; 
-            border-left: 10px solid var(--gold); 
+            border-left: 12px solid var(--gold);
+            margin-bottom: 20px;
         }
-        .l-card h4 { color: var(--gold); font-size: 1.4rem; margin-bottom: 8px; }
-        .l-card p { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #fff; }
+        .l-card h4 { color: var(--gold); font-size: 1.3rem; margin-bottom: 5px; text-transform: uppercase; }
+        .l-card p { font-size: 2.1rem; font-weight: 800; line-height: 1.2; color: #fff; }
 
-        /* TOP BAND: RUNNING HEADLINE */
+        /* TOP BAND - Fixed Height 150px */
         .top-band { 
             grid-column: 2 / 4; 
             background: #fff; 
             display: flex; 
             align-items: center; 
-            padding: 0 40px; 
+            padding: 0 40px;
             border-bottom: 5px solid var(--crimson);
         }
-        #top-ptr { 
-            flex: 1; 
-            font-size: 4.5rem; 
-            font-weight: 800; 
-            color: var(--navy); 
-            text-transform: uppercase;
-        }
-        .logo-box { background: var(--crimson); color: #fff; padding: 10px 30px; font-size: 3rem; font-weight: 900; }
+        #top-ptr { flex: 1; font-size: 4.5rem; font-weight: 900; color: var(--navy); }
+        .logo-box { background: var(--crimson); color: #fff; padding: 10px 40px; font-size: 3rem; font-weight: 900; }
 
-        /* MAIN STAGE: BREAKING NEWS AREA */
+        /* CENTER STAGE - No Overlap Area */
         .main-stage { 
             grid-column: 2 / 4; 
-            position: relative;
-            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'), #111;
+            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 50px;
         }
 
-        .breaking-box {
-            width: 90%;
-            position: relative;
-            z-index: 5;
-            text-align: center;
-        }
-
+        .breaking-box { text-align: center; width: 100%; }
         .b-tag { 
             display: inline-block;
             background: var(--crimson); 
             color: #fff; 
-            padding: 10px 60px; 
-            font-size: 3rem; 
+            padding: 15px 70px; 
+            font-size: 3.5rem; 
             font-weight: 900; 
             transform: skew(-15deg); 
-            margin-bottom: 30px;
-            box-shadow: 10px 10px 0 var(--gold);
+            margin-bottom: 40px;
+            box-shadow: 12px 12px 0 #000;
         }
+        #b-text { font-size: 6.5rem; font-weight: 800; color: #fff; line-height: 1.1; text-shadow: 5px 5px 15px #000; }
 
-        #b-text { 
-            font-size: 6rem; 
-            font-weight: 800; 
-            line-height: 1.1; 
-            text-shadow: 4px 4px 20px rgba(0,0,0,0.8);
-            color: #fff;
-        }
-
-        /* BOTTOM SHELF: TOP UPDATES & BIG NUMS */
+        /* BOTTOM SHELF - 180px Height */
         .bottom-shelf { 
             grid-column: 2 / 3; 
-            background: linear-gradient(90deg, #000, #111); 
+            background: #111; 
             display: flex; 
             align-items: center; 
             padding-left: 40px;
             border-top: 2px solid #333;
         }
-
         .icon-box { 
-            width: 120px; height: 120px; 
+            width: 130px; height: 130px; 
             background: var(--gold); 
-            color: #000; 
             border-radius: 15px; 
             display: flex; align-items: center; justify-content: center; 
-            font-size: 5rem; margin-right: 30px; 
+            font-size: 5.5rem; margin-right: 30px; color: #000;
         }
-
-        .t10-info h2 { color: var(--gold); font-size: 2rem; margin-bottom: 5px; }
-        .t10-info p { font-size: 3.5rem; font-weight: 700; color: #fff; }
+        .t10-info h2 { color: var(--gold); font-size: 2rem; }
+        .t10-info p { font-size: 3.8rem; font-weight: 700; color: #fff; }
 
         .bn-shelf { 
             grid-column: 3 / 4; 
             background: var(--navy); 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            border-left: 4px solid var(--gold);
+            display: flex; flex-direction: column; 
+            align-items: center; justify-content: center;
+            border-left: 5px solid var(--gold);
         }
-        #bn-v { font-size: 6rem; font-weight: 900; color: var(--gold); line-height: 1; }
-        #bn-l { font-size: 2.5rem; color: #fff; opacity: 0.8; }
+        #bn-v { font-size: 6.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
+        #bn-l { font-size: 2.2rem; color: #fff; opacity: 0.7; text-transform: uppercase; }
 
-        /* TICKER */
+        /* TICKER - Bottom 100px */
         .ticker { 
             grid-column: 1 / 4; 
             background: #fff; 
-            color: #000; 
             display: flex; 
             align-items: center; 
-            border-top: 8px solid var(--crimson); 
-            overflow: hidden; 
+            border-top: 6px solid var(--crimson);
         }
-        .t-head { 
-            background: var(--crimson); 
-            color: #fff; 
-            height: 100%; 
-            display: flex; 
-            align-items: center; 
-            padding: 0 50px; 
-            font-size: 2.5rem; 
-            font-weight: 900; 
-            z-index: 10; 
-        }
-        #t-scroll { 
-            white-space: nowrap; 
-            font-size: 3rem; 
-            font-weight: 800; 
-            animation: scroll 30s linear infinite; 
-            padding-left: 20px;
-        }
+        .t-head { background: var(--crimson); color: #fff; height: 100%; display: flex; align-items: center; padding: 0 60px; font-size: 2.8rem; font-weight: 900; }
+        #t-scroll { white-space: nowrap; font-size: 3.2rem; font-weight: 800; animation: scroll 35s linear infinite; color: #000; padding-left: 50px; }
         @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
     </style>
 </head>
@@ -196,8 +153,7 @@
             <div class="rupee-coin">₹</div>
             <img src="https://images.assettype.com/fortune-india/import/individual/2025/nirmala-sitharaman.jpg" class="leader-img">
         </div>
-        <div id="left-list">
-            </div>
+        <div id="left-list"></div>
     </aside>
 
     <header class="top-band">
@@ -208,26 +164,26 @@
     <main class="main-stage">
         <div class="breaking-box">
             <div class="b-tag">BREAKING NEWS</div>
-            <div id="b-text">ಬಜೆಟ್ 2026 ಲೈವ್ ಅಪ್ಡೇಟ್ಸ್</div>
+            <div id="b-text">WAITING FOR DATA...</div>
         </div>
     </main>
 
     <div class="bottom-shelf">
         <div class="icon-box" id="t10-icon"><i class="fas fa-bolt"></i></div>
         <div class="t10-info">
-            <h2 id="t-h">ಮುಖ್ಯಾಂಶಗಳು</h2>
-            <p id="t-p">ಮಾಹಿತಿಗಾಗಿ ಕಾಯಿರಿ...</p>
+            <h2 id="t-h">HIGHLIGHTS</h2>
+            <p id="t-p">Loading updates...</p>
         </div>
     </div>
 
     <div class="bn-shelf">
-        <div id="bn-v">00</div>
-        <div id="bn-l">VALUE</div>
+        <div id="bn-v">0.0</div>
+        <div id="bn-l">SENSEX</div>
     </div>
 
     <footer class="ticker">
-        <div class="t-head">FLASH</div>
-        <div id="t-scroll">BUDGET 2026 • LIVE UPDATES • PRO KANNADA NEWS</div>
+        <div class="t-head">LATEST</div>
+        <div id="t-scroll">... BUDGET 2026 LIVE UPDATES ...</div>
     </footer>
 
     <script type="module">
@@ -253,52 +209,38 @@
         const iconMap = {
             "ಕೃಷಿ": "fa-tractor", "ರೈತ": "fa-tractor", "ತೆರಿಗೆ": "fa-hand-holding-dollar", 
             "ಆದಾಯ": "fa-wallet", "ರೈಲ್ವೇ": "fa-train", "ಸಾರಿಗೆ": "fa-bus",
-            "ಶಿಕ್ಷಣ": "fa-graduation-cap", "ಶಾಲಾ": "fa-school", "ಆರೋಗ್ಯ": "fa-heart-pulse", 
-            "ವೈದ್ಯಕೀಯ": "fa-hospital", "ರಕ್ಷಣೆ": "fa-shield-halved", "ಸೇನೆ": "fa-person-military-pointing",
-            "ಬ್ಯಾಂಕ್": "fa-university", "ಹಣಕಾಸು": "fa-coins", "ಚಿನ್ನ": "fa-gem", "ಬೆಳ್ಳಿ": "fa-coins",
-            "ಮಹಿಳೆ": "fa-person-dress"
+            "ಶಿಕ್ಷಣ": "fa-graduation-cap", "ಆರೋಗ್ಯ": "fa-heart-pulse"
         };
 
         onValue(ref(db, 'budget_live'), (snapshot) => {
             const data = snapshot.val();
             if(data) {
                 state = data;
-                updateStaticDisplay();
+                if(state.left) {
+                    document.getElementById('left-list').innerHTML = state.left.slice(0, 4).map(i => `
+                        <div class="l-card">
+                            <h4>${i.h}</h4>
+                            <p>${i.b}</p>
+                        </div>
+                    `).join('');
+                }
+                if(state.ticker) document.getElementById('t-scroll').innerText = state.ticker.join(" • ");
             }
         });
 
-        function updateStaticDisplay() {
-            if(state.left) {
-                document.getElementById('left-list').innerHTML = state.left.slice(0, 4).map(i => `
-                    <div class="l-card">
-                        <h4>${i.h}</h4>
-                        <p>${i.b}</p>
-                    </div>
-                `).join('');
-            }
-            if(state.ticker) {
-                document.getElementById('t-scroll').innerText = state.ticker.join(" • ");
-            }
-        }
-
-        // Cycle Breaking News & Top Pointers
         setInterval(() => {
             if(state.pointers?.length) document.getElementById('top-ptr').innerText = state.pointers[it.p++ % state.pointers.length];
             if(state.breaking?.length) document.getElementById('b-text').innerText = state.breaking[it.b++ % state.breaking.length];
         }, 7000);
 
-        // Cycle Bottom Updates & Big Numbers
         setInterval(() => {
             if(state.top10?.length) {
                 const item = state.top10[it.t++ % state.top10.length];
                 document.getElementById('t-h').innerText = item.h;
                 document.getElementById('t-p').innerText = item.b;
-                
-                let foundIcon = "fa-bolt"; 
-                for(let key in iconMap) {
-                    if(item.h.includes(key) || item.b.includes(key)) { foundIcon = iconMap[key]; break; }
-                }
-                document.getElementById('t10-icon').innerHTML = `<i class="fas ${foundIcon}"></i>`;
+                let ic = "fa-bolt"; 
+                for(let k in iconMap) if(item.h.includes(k) || item.b.includes(k)) ic = iconMap[k];
+                document.getElementById('t10-icon').innerHTML = `<i class="fas ${ic}"></i>`;
             }
             if(state.bignums?.length) {
                 const n = state.bignums[it.n++ % state.bignums.length];
